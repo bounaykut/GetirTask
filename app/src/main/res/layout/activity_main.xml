@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aykut.getirtask.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/minCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/endYearButton"
+            android:layout_below="@+id/endYearButton"
+            android:layout_marginTop="10dp"
+            android:text="min count" />
+
+        <TextView
+            android:id="@+id/maxCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/minCountText"
+            android:layout_below="@+id/minCountText"
+            android:layout_marginTop="38dp"
+            android:text="max count" />
+
+        <EditText
+            android:id="@+id/minCountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/minCountTextView"
+            android:layout_below="@+id/minCountTextView"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/maxCountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignStart="@+id/maxCountTextView"
+            android:layout_below="@+id/maxCountTextView"
+            android:layout_marginTop="14dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/endYearText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/endYearButton"
+            android:layout_below="@+id/startYearButton"
+            android:layout_marginTop="10dp"
+            android:text="end year" />
+
+        <TextView
+            android:id="@+id/startYearText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/startYearButton"
+            android:layout_marginTop="10dp"
+            android:text="start year" />
+
+        <ImageButton
+            android:id="@+id/startYearButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/endYearText"
+            android:layout_below="@+id/startYearText"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <ImageButton
+            android:id="@+id/endYearButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/endYearText"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/minCountText"
+            android:layout_marginBottom="20dp"
+            android:text="POST" />
+
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
