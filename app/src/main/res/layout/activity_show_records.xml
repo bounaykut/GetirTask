@@ -25,7 +25,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginRight="1dp"
-                android:background="@color/colorEnabled"
+                android:background="@color/colorDisabled"
+                android:enabled="false"
+                android:clickable="false"
                 android:text="Prev" />
 
             <Button

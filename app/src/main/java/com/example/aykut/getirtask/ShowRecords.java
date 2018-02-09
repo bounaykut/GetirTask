@@ -20,6 +20,7 @@ public class ShowRecords extends AppCompatActivity {
     private int LAST_PAGE_NO = 0;
     private int TOTAL_LAST_PAGE_ITEM = 0;
     private final int ITEMS_PER_PAGE = 10;
+    private int TOTAL_ITEMS = 0;
 
     ArrayList<String> items;
     ArrayList<String> item10;
@@ -50,8 +51,9 @@ public class ShowRecords extends AppCompatActivity {
                 if (i < 10) items.add(i + ". " + count);
                 item10.add(i + ". " + count);
             }
-            TOTAL_LAST_PAGE_ITEM = records.length() % ITEMS_PER_PAGE;
-            LAST_PAGE_NO = (records.length() / ITEMS_PER_PAGE) - 1;
+            TOTAL_ITEMS = records.length();
+            TOTAL_LAST_PAGE_ITEM = TOTAL_ITEMS % ITEMS_PER_PAGE;
+            LAST_PAGE_NO = (TOTAL_ITEMS / ITEMS_PER_PAGE) - 1;
             if (TOTAL_LAST_PAGE_ITEM != 0) LAST_PAGE_NO++;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -62,6 +64,11 @@ public class ShowRecords extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         nextButton = (Button) findViewById(R.id.nextButton);
+        if (TOTAL_ITEMS == 0) {
+            nextButton.setEnabled(false);
+            nextButton.setClickable(false);
+            nextButton.setBackgroundColor(getResources().getColor(R.color.colorDisabled));
+        }
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,8 +97,15 @@ public class ShowRecords extends AppCompatActivity {
             items.addAll(item10.subList(pageNo*10,(pageNo*10+TOTAL_LAST_PAGE_ITEM)));
         } else {
             adapter.clear();
-            items.addAll(item10.subList(pageNo * 10, (pageNo + 1) * 10));
             pageNo++;
+            if (pageNo != LAST_PAGE_NO) {
+                items.addAll(item10.subList(pageNo * 10, (pageNo + 1) * 10));
+            } else {
+                nextButton.setEnabled(false);
+                nextButton.setClickable(false);
+                nextButton.setBackgroundColor(getResources().getColor(R.color.colorDisabled));
+                items.addAll(item10.subList(pageNo * 10, (pageNo * 10 + TOTAL_LAST_PAGE_ITEM)));
+            }
         }
 
 
@@ -114,6 +128,9 @@ public class ShowRecords extends AppCompatActivity {
             adapter.clear();
             pageNo--;
             items.addAll(item10.subList(pageNo * 10, (pageNo + 1) * 10));
+            if (pageNo == FIRST_PAGE_NO)
+                prevButton.setBackgroundColor(getResources().getColor(R.color.colorDisabled));
+            else prevButton.setBackgroundColor(getResources().getColor(R.color.colorEnabled));
         }
 
 
